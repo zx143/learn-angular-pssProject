@@ -3,5 +3,10 @@
 
 <app-image-slider [sliders]="imgSliderList"></app-image-slider>
 
-<app-horizontal-grid [(username)]="username"></app-horizontal-grid>
+<app-horizontal-grid [channels]="channels">
+   <div *ngFor="let item of channels" appGridItem>
+      <img [src]="item.icon" alt="" appGridItemImage="2rem" fitModule="none">
+      <span appGridItemTitle=".8rem">{{item.title}}</span>
+   </div>
+</app-horizontal-grid>
 

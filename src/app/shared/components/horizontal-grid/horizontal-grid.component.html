@@ -1,6 +1,10 @@
-<div class="container">
-  <input type="text" [value]="username" (input)="username=$event.target.value">
-  <br>
-  <span (click)="handleClick()">{{username}}</span>
-  {{ result }}
+<div class="container" [ngStyle]="{'grid-template-rows': templateRows, 
+  'grid-template-columns': templateColumns}"
+  (scroll)="handleScroll($event)"
+  >
+  <ng-content></ng-content>
+</div>
+<!-- 可滚动时出现的区域 -->
+<div class="underline" *ngIf="scrollable">
+  <div class="highlight" [ngStyle]="{'margin': sliderMargin}"></div>
 </div>

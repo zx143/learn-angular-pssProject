@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import * as Mock from 'mockjs'
-import { TopMenu, ImageSlider, ImageSliderComponent } from './shared/components';
+import { TopMenu, ImageSlider, ImageSliderComponent, ChannelList } from './shared/components';
 
 @Component({
   selector: 'app-root',
@@ -28,12 +28,22 @@ export class AppComponent {
     ]
   })
 
-  // test
-  username=''
+  private mockChannelList = Mock.mock({
+    'list|16': [
+      {
+        'id': '@id',
+        'icon': '@image("50x50", "#ff8080")',
+        'title': '@ctitle(2,4)',
+        'link': '@url(12,18)'
+      }
+    ]
+  })
 
   public topMenuList:TopMenu[] = this.mockTopMenuList.list
 
   public imgSliderList: ImageSlider[] = this.mockImgSliderList.list
+
+  public channels: ChannelList[] = this.mockChannelList.list
 
   public tabEmit(target:TopMenu):void {
     console.log(target);

@@ -1,4 +1,36 @@
-input[type="text"] {
-  width: 200px;
-  height: 32px;
+/* :host 选中的是当前组件本身 类似于一个html文档的html */
+// :host {
+//   display: flex;
+//   overflow-x: auto;
+// }
+// 滚动三剑客
+.scroll-x-default {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.container {
+  background-color: #fff;
+  padding: 5px 0;
+  @extend .scroll-x-default;
+  overflow-y: hidden;
+  display: grid;
+  place-content: stretch;
+  place-items: center;
+  grid-gap: 0.4rem;
+  grid-auto-flow: row;
+}
+
+.underline {
+  width: 20%;
+  height: 2px;
+  background-color: #f5f5f5;
+  margin: 0 auto;
+  .highlight {
+    width: 50%;
+    height: 2px;
+    padding: 0;
+    background-color: #e02f29;
+  }
 }
