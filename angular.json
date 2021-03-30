@@ -30,7 +30,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/mockjs/dist/mock.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -1,0 +1,82 @@
+.df-jc-ac {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.df-fd-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.df-col-jc-ac {
+  @extend .df-fd-column;
+  justify-content: center;
+  align-items: center;
+}
+
+.df {
+  display: flex;
+}
+
+.pr {
+  position: relative;
+}
+
+.pa {
+  position: absolute;
+}
+
+.m5 {
+  margin: 5px;
+}
+
+.container {
+  @extend .pr;
+  overflow: hidden;
+
+  .image-slider {
+    @extend .df;
+    overflow-x: scroll;
+    // transition: .3s;
+    /* 轮播过渡效果 */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* 强制在x轴吸附 */
+    scroll-snap-type: x mandatory;
+    > img { 
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* 吸附到起始位置 */
+      scroll-snap-align: start;
+    }
+  }
+
+  .nav-section {
+    @extend .pr;
+    bottom: 0;
+    width: 100%;
+    opacity: .5;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+
+    .slide-btn {
+      @extend .df, .m5;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      text-decoration: none;
+      border-radius: 50%;
+    }
+
+    .active {
+      background-color: #f00;
+    }
+  }
+
+  
+}

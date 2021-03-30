@@ -1,0 +1,9 @@
+<ul class="top-nav" [ngStyle]="{'background-color': backgroundColor}">
+  <li *ngFor="let item of topMenuList; let i = index; let even = even">
+    <a href="#" (click)="selectChange(i)" [ngClass]="i===selectIndex? 'titleActiveColor' : 'titleColor'"
+      [class.active]="i === selectIndex">
+      {{item.title}}
+    </a>
+    <span *ngIf="i === selectIndex" class="indicator" [ngStyle]="{'background-color': indicatorColor}"></span>
+  </li>
+</ul>

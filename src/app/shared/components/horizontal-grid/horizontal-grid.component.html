@@ -1,0 +1,6 @@
+<div class="container">
+  <input type="text" [value]="username" (input)="username=$event.target.value">
+  <br>
+  <span (click)="handleClick()">{{username}}</span>
+  {{ result }}
+</div>
