@@ -1,51 +1,42 @@
-import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import * as Mock from 'mockjs'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HomeService, token } from 'src/app/home/services';
 import { ChannelList, ImageSlider } from 'src/app/shared/components';
 
 @Component({
   selector: 'app-home-detail',
   templateUrl: './home-detail.component.html',
-  styleUrls: ['./home-detail.component.scss']
+  styleUrls: ['./home-detail.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeDetailComponent implements OnInit {
-  private mockImgSliderList = Mock.mock({
-    'list|6': [
-      {
-        'imgUrl': '@image("360x100")',
-        'link': '@url()',
-        'caption': '@ctitle(4,8)'
-      }
-    ]
-  })
-
-  private mockChannelList = Mock.mock({
-    'list|16': [
-      {
-        'id': '@id',
-        'icon': '@image("50x50", "#ff8080")',
-        'title': '@ctitle(2,4)',
-        'link': '@url(12,18)'
-      }
-    ]
-  })
-
-  public imgSliderList: ImageSlider[] = this.mockImgSliderList.list
-
-  public channels: ChannelList[] = this.mockChannelList.list
-
+  public imgSliderList: ImageSlider[] = []
+  public channels: ChannelList[] = []
   selectedTabLink:string;
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private service: HomeService, 
+    @Inject(token) private baseURL: string,
+    private cd: ChangeDetectorRef
+    ) { }
 
   ngOnInit() {
+    // console.log(this.baseURL);
+    this.imgSliderList = this.service.getImageSliderList()
+    this.channels = this.service.getChannelList()
+    // 发起http请求
+    // this.service.getImageSliderList().subscribe(imageSlider=> {
+    //   this.imgSliderList = imageSlider
+    //   this.cd.markForCheck()
+    // })
+    // this.service.getChannelList().subscribe(channels=> {
+    //   this.channels = channels
+    //   this.cd.markForCheck()
+    // })
     this.route.paramMap.subscribe(params => {
-      console.log(params, params.get('tabLink'));
+      // console.log(params, params.get('tabLink'));
       this.selectedTabLink = params.get('tabLink')
+      this.cd.markForCheck()
     })
-  }
-
-  ngAfterViewInit(): void {
-   
   }
 }

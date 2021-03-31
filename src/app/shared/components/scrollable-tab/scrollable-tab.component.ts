@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 
 export interface TopMenu {
@@ -10,7 +10,8 @@ export interface TopMenu {
 @Component({
   selector: 'app-scrollable-tab',
   templateUrl: './scrollable-tab.component.html',
-  styleUrls: ['./scrollable-tab.component.scss']
+  styleUrls: ['./scrollable-tab.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScrollableTabComponent implements OnInit {
   // 接收父级的数据topMenuList

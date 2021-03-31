@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import * as Mock from 'mockjs'
+import { HomeService } from 'src/app/home/services';
+
 import { ImageSliderComponent, TopMenu } from 'src/app/shared/components';
 
 @Component({
@@ -10,21 +11,12 @@ import { ImageSliderComponent, TopMenu } from 'src/app/shared/components';
 })
 export class HomeContainerComponent implements OnInit {
   @ViewChild(ImageSliderComponent) imageSlider: ImageSliderComponent;
-  private mockTopMenuList = Mock.mock({
-    'list|17': [
-      {
-        'title': '@ctitle(2)',
-        'link': '@word(3,5)',
-        'id': '@id'
-      }
-    ]
-  })
+  public topMenuList: TopMenu[] = []
 
-  public topMenuList: TopMenu[] = [{title: '热门', link: 'hot',id: '1'}, ...this.mockTopMenuList.list]
-
-  ngOnInit(): void {
+  constructor(private router: Router , private service: HomeService) {
   }
-  constructor(private router: Router) {
+  ngOnInit(): void {
+    this.topMenuList = this.service.getTopMenuList()
   }
   public tabEmit(target: TopMenu): void {
     this.router.navigate(['home', target.link])

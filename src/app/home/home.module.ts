@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { HomeAuxComponent, HomeContainerComponent, HomeDetailComponent, HomeGrandComponent, Product } from './components';
+import { ChildComponent, HomeAuxComponent, HomeContainerComponent, HomeDetailComponent, HomeGrandComponent, ParentComponent } from './components';
+import { token } from './services';
 
 
 @NgModule({
@@ -10,19 +11,15 @@ import { HomeAuxComponent, HomeContainerComponent, HomeDetailComponent, HomeGran
     HomeContainerComponent,
     HomeDetailComponent,
     HomeGrandComponent,
-    HomeAuxComponent
+    HomeAuxComponent,
+    ParentComponent,
+    ChildComponent
   ],
   providers: [
-    {
-      // provide标识符
-      provide: Product, 
-      // 自定义创建实例操作
-      useFactory: ()=> {
-        return new Product('iphoneX', 'cyan')
-      },
-      // 描述依赖
-      deps: []
-    },
+   {
+     provide: token,
+     useValue: 'http://localdev'
+   }
   ],
   imports: [
     HomeRoutingModule,

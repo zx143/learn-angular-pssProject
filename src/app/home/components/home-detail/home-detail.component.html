@@ -1,6 +1,4 @@
-<div *ngIf="selectedTabLink === 'hot'; then hot else other"></div>
-
-<ng-template #hot>
+<div *ngIf="selectedTabLink === 'hot'; else other">
   <app-image-slider [sliders]="imgSliderList"></app-image-slider>
   <app-horizontal-grid [channels]="channels">
     <div *ngFor="let item of channels" appGridItem>
@@ -8,10 +6,10 @@
       <span appGridItemTitle=".8rem">{{item.title}}</span>
     </div>
   </app-horizontal-grid>
-</ng-template>
+</div>
 
 <ng-template #other>
-  other works
+  <span>other works</span>
 </ng-template>
-<a [routerLink]="['grand']" routerLinkActive="active">link to grand</a>
+<div><a [routerLink]="['grand']" routerLinkActive="active">link to grand</a></div>
 <router-outlet></router-outlet>

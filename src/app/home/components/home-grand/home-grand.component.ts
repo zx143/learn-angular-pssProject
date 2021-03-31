@@ -1,4 +1,4 @@
-import { Component, Inject, Injectable, Injector, OnInit } from '@angular/core';
+import { Component, Inject, Injectable, InjectionToken, Injector, OnInit } from '@angular/core';
 
 @Injectable()
 export class Product {
@@ -37,6 +37,8 @@ export class HomeGrandComponent implements OnInit {
     this.price = 123.1314
     this.data = [1, 2, 3, 4, 5]
     // this.pur = new PurchaseOther()
+    // 避免重复字符串冲突
+    const token = new InjectionToken<string>('baseURL')
     const injector = Injector.create({
       providers: [
         {
@@ -53,11 +55,15 @@ export class HomeGrandComponent implements OnInit {
           provide: PurchaseOther,
           useClass: PurchaseOther,
           deps: [Product]
+        },
+        {
+          provide: token,
+          useValue: 'http://localhost'
         }
       ]
     })
     console.log(injector.get(Product));
-    console.log(injector.get(PurchaseOther));
+    console.log(injector.get(token));
   }
 
   minusDays(date: Date, days: number): Date{

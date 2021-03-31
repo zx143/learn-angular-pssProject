@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 export interface ChannelList {
   id: string,
@@ -10,7 +10,8 @@ export interface ChannelList {
 @Component({
   selector: 'app-horizontal-grid',
   templateUrl: './horizontal-grid.component.html',
-  styleUrls: ['./horizontal-grid.component.scss']
+  styleUrls: ['./horizontal-grid.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HorizontalGridComponent implements OnInit {
   @Input() channels: ChannelList[];
