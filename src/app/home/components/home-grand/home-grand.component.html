@@ -4,6 +4,9 @@
 <div>
   {{date | date: 'yyyy-MM-dd hh:mm:ss'}}
 </div>
+<div>
+  {{ date | appAgo }}
+</div>
 <p>
   <!-- 第三个参数限制长度,整数最小4位,小数0-2位 -->
   {{price | currency:'CNY' : 'symbol' : '4.0-2' }}
