@@ -1,11 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter, SimpleChange } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 
 export interface TopMenu {
   title: string,
-  readonly link?: string
+  link?: string,
+  id: string
 }
-
 
 @Component({
   selector: 'app-scrollable-tab',
@@ -15,13 +15,12 @@ export interface TopMenu {
 export class ScrollableTabComponent implements OnInit {
   // 接收父级的数据topMenuList
   @Input() topMenuList: TopMenu[] = []
-  @Input() backgroundColor: string = ''
+  @Input() backgroundColor: string = '#fff'
   @Input() indicatorColor: string = '#999'
   // 通知父级事件
   @Output() tabSelected = new EventEmitter<TopMenu>()
 
   public selectIndex: number = -1
-
 
   constructor() {
     // console.log('组件构造器');
