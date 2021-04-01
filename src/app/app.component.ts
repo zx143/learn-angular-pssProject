@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
         map(path => this.getSelectedIndex(path)),
         // tap(i => console.log('路由索引', i))
       )
-      console.log(this.selectedIndex$);
+      // console.log(this.selectedIndex$);
     }
 
   private getSelectedIndex(tab: string): number {

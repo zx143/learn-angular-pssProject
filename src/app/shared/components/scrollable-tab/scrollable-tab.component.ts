@@ -59,7 +59,7 @@ export class ScrollableTabComponent implements OnInit {
   //   console.log('view 脏值检测');
   // }
 
-  // ngOnDestory() {
+  // ngOnDestroy() {
   //   console.log('scroll-tab组件销毁');
   // }
 }

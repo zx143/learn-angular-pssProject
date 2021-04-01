@@ -10,4 +10,6 @@
   </ng-container>
 </ng-container>
 
-<span>other works</span>
+<div class="ad-container" *ngIf="ad">
+  <img [src]="ad.imageUrl" (click)="toAdLink(ad.link)" alt="" class="ad-image">
+</div>

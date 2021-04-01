@@ -81,7 +81,7 @@ export class HomeService {
   private mockAdList = Mock.mock({
     'list|6': [
       {
-        'imageUrl': '@image("360x120")',
+        'imageUrl': '@image("360x120", "#ff4d4d")',
         "link": '@word(2,5)'
       }
     ]
@@ -109,11 +109,10 @@ export class HomeService {
   getTabItems() {
     return this.tabItems
   }
-  getAdList() {
-    // return this.http.get<Ad>(`${environment.baseURL}/ad`, {
+  getAdList(tab?: string) {
+    // return this.http.get<Ad[]>(`${environment.baseURL}/abs`, {
     //   params: {
-    //     name: "xxx",
-    //     age: 'xxx'
+    //     categories_link: tab,
     //   }
     // })
     return this.mockAdList.list
