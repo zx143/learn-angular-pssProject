@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { filter, map, tap } from 'rxjs/operators';
 import { HomeService } from 'src/app/home/services';
 
 import { ImageSliderComponent, TopMenu } from 'src/app/shared/components';
@@ -12,10 +14,17 @@ import { ImageSliderComponent, TopMenu } from 'src/app/shared/components';
 export class HomeContainerComponent implements OnInit {
   @ViewChild(ImageSliderComponent) imageSlider: ImageSliderComponent;
   public topMenuList: TopMenu[] = []
-
-  constructor(private router: Router , private service: HomeService) {
+  selectedTab$: Observable<string>
+  constructor(private router: Router, private service: HomeService, private route: ActivatedRoute) {
   }
   ngOnInit(): void {
+    this.selectedTab$ = this.route.firstChild.paramMap
+      .pipe(
+        filter(params => params.has('tabLink')),
+        map(params => params.get('tabLink'))
+        // tap(val=> console.warn('tap',val))
+      )
+      // console.warn(this.selectedTab$)
     this.topMenuList = this.service.getTopMenuList()
   }
   public tabEmit(target: TopMenu): void {

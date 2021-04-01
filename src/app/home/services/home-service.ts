@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as Mock from 'mockjs'
+import { TabItem } from 'src/app/shared/domain';
 import { environment } from 'src/environments/environment';
 import { ChannelList, TopMenu } from '../../shared/components';
 @Injectable({
@@ -35,6 +36,48 @@ export class HomeService {
       }
     ]
   })
+  private mockTabItems = Mock.mock({
+    'list|5': [
+      {
+        title: '@ctitle(2,4)',
+        link: '@word(3,5)',
+        icon: '@image("50x50", "#a8a8a8")',
+        selectedIcon: '@image("50*50", "#ff4a4c")'
+      }
+    ]
+  })
+  private tabItems:TabItem[] = [
+    {
+      title: '首页',
+      icon: '/assets/tabs/home.png',
+      link: 'home',
+      selectedIcon: '/assets/tabs/home (1).png'
+    },
+    {
+      title: '推荐',
+      icon: '/assets/tabs/recommend.png',
+      link: 'recommend',
+      selectedIcon: '/assets/tabs/recommend (1).png'
+    },
+    {
+      title: '分类',
+      icon: '/assets/tabs/category.png',
+      link: 'category',
+      selectedIcon: '/assets/tabs/category (1).png'
+    },
+    {
+      title: '聊天',
+      icon: '/assets/tabs/chat.png',
+      link: 'chat',
+      selectedIcon: '/assets/tabs/chat (1).png'
+    },
+    {
+      title: '个人中心',
+      icon: '/assets/tabs/my.png',
+      link: 'my',
+      selectedIcon: '/assets/tabs/my (1).png'
+    }
+  ]
   constructor(private http: HttpClient){}
   getTopMenuList() {
     //  return this.http.get<TopMenu[]>(`${environment.baseURL}/topmenu`)
@@ -54,5 +97,8 @@ export class HomeService {
   getChannelList() {
     // return this.http.get<ChannelList[]>(`${environment.baseURL}/channels`)
     return this.mockChannelList.list
+  }
+  getTabItems() {
+    return this.tabItems
   }
 }

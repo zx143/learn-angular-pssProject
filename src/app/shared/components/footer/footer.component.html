@@ -1,0 +1,8 @@
+<app-horizontal-grid [channels]="tabItems" [cols]="5" [displayCols]="5">
+  <div *ngFor="let item of tabItems; let i = index" appGridItem>
+    <img [src]="selectedIndex === i ? item.selectedIcon : item.icon"
+      (click)="toggleSelectedTabItem(i)" 
+      alt="" appGridItemImage="2rem" fitModule="none">
+    <span appGridItemTitle=".8rem">{{item.title}}</span>
+  </div>
+</app-horizontal-grid>

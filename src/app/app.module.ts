@@ -11,6 +11,10 @@ import { AppRoutingModule } from './app-routing-module';
 import { HomeModule } from './home';
 
 import { NotificationInterceptor, ParamInterceptor } from './home/interceptor';
+import { RecommendModule } from './recommend';
+import { MyModule } from './my';
+import { ChatModule } from './chat';
+import { CategoryModule } from './category';
 
 @NgModule({
   // 模块拥有的组件 指令 管道, 每个只能在一个模块中声明
@@ -25,6 +29,10 @@ import { NotificationInterceptor, ParamInterceptor } from './home/interceptor';
     AppRoutingModule,
     HttpClientModule,
     HomeModule,
+    RecommendModule,
+    MyModule,
+    ChatModule,
+    CategoryModule
   ],
   // 注入
   providers: [

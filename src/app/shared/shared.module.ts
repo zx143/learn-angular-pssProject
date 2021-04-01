@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HorizontalGridComponent, ImageSliderComponent, ScrollableTabComponent } from './components';
+import { CountDownComponent, FooterComponent, HorizontalGridComponent, ImageSliderComponent, ScrollableTabComponent } from './components';
 import { GridItemDirective, GridItemImageDirective, GridItemTitleDirective } from './directives';
 import { AgoPipe } from './pipe';
 
@@ -11,10 +11,12 @@ import { AgoPipe } from './pipe';
     ScrollableTabComponent,
     ImageSliderComponent,
     HorizontalGridComponent,
+    CountDownComponent,
+    FooterComponent,
     GridItemDirective,
     GridItemImageDirective,
     GridItemTitleDirective,
-    AgoPipe
+    AgoPipe,
   ],
   imports: [
     CommonModule,
@@ -26,10 +28,13 @@ import { AgoPipe } from './pipe';
     ScrollableTabComponent,
     ImageSliderComponent,
     HorizontalGridComponent,
+    CountDownComponent,
+    FooterComponent,
     GridItemDirective,
     GridItemImageDirective,
     GridItemTitleDirective,
-    AgoPipe
+    AgoPipe,
+   
   ]
 })
 export class SharedModule { }

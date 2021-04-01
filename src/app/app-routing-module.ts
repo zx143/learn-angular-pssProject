@@ -10,6 +10,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  // enableTracing 允许路由被追踪 { enableTracing: true}
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

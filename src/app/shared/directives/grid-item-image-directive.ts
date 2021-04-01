@@ -26,6 +26,6 @@ export class GridItemImageDirective implements OnInit {
 
   @HostListener('click', ['$event.target'])
   handleClick(e) {
-    console.log('image-directive',e);
+    // console.log('image-directive',e);
   }
 }

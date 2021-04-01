@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
-
 export interface TopMenu {
   title: string,
   link?: string,
@@ -18,15 +17,19 @@ export class ScrollableTabComponent implements OnInit {
   @Input() topMenuList: TopMenu[] = []
   @Input() backgroundColor: string = '#fff'
   @Input() indicatorColor: string = '#999'
+  @Input() selectedTabLink: string
   // 通知父级事件
   @Output() tabSelected = new EventEmitter<TopMenu>()
 
-  public selectIndex: number = -1
+  // public selectIndex: number = -1
 
   constructor() {
     // console.log('组件构造器');
   }
-
+  public selectChange(i: number): void {
+    // this.selectIndex = i
+    this.tabSelected.emit(this.topMenuList[i])
+  }
   // 组件构造完成,可以随意使用组件上的属性和方法
   ngOnInit(): void {
    // console.log('组件  init');
@@ -56,13 +59,7 @@ export class ScrollableTabComponent implements OnInit {
   //   console.log('view 脏值检测');
   // }
 
-  ngOnDestory() {
-    console.log('scroll-tab组件销毁');
-  }
-
-  public selectChange(i: number): void {
-    this.selectIndex = i
-    this.tabSelected.emit(this.topMenuList[i])
-  }
-
+  // ngOnDestory() {
+  //   console.log('scroll-tab组件销毁');
+  // }
 }

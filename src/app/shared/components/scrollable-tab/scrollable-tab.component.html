@@ -1,9 +1,10 @@
 <ul class="top-nav" [ngStyle]="{'background-color': backgroundColor}">
-  <li *ngFor="let item of topMenuList; let i = index; let even = even">
-    <a (click)="selectChange(i)" [ngClass]="i===selectIndex? 'titleActiveColor' : 'titleColor'"
-      [class.active]="i === selectIndex">
+  <li *ngFor="let item of topMenuList; let i = index">
+    <a (click)="selectChange(i)" [ngClass]="(item.link === selectedTabLink) ? 'titleActiveColor' : 'titleColor'"
+      [class.active]="item.link ===selectedTabLink">
       {{item.title}}
     </a>
-    <span *ngIf="i === selectIndex" class="indicator" [ngStyle]="{'background-color': indicatorColor}"></span>
+    <span *ngIf="item.link === selectedTabLink" class="indicator"
+      [ngStyle]="{'background-color': indicatorColor}"></span>
   </li>
 </ul>
