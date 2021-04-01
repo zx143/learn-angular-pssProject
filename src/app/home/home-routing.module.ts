@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeContainerComponent, HomeDetailComponent, HomeGrandComponent, ParentComponent } from './components';
+import { HomeContainerComponent, HomeDetailComponent } from './components';
 
 
 const routes: Routes = [
@@ -12,12 +12,6 @@ const routes: Routes = [
       {
         path: ':tabLink',
         component: HomeDetailComponent,
-        children: [
-          {
-            path: 'grand',
-            component: HomeGrandComponent
-          }
-        ]
       },
       // 如果子路由没有参数则重定向到hot子路由组件模块
       {
@@ -26,11 +20,6 @@ const routes: Routes = [
         pathMatch: 'full'
       },
     ]
-  },
-  {
-    path: 'change-detection',
-    component: ParentComponent,
-    pathMatch: 'full'
   }
 ];
 

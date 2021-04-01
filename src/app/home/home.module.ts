@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { HomeAuxComponent, HomeContainerComponent, HomeDetailComponent, HomeGrandComponent, ParentComponent } from './components';
+import { HomeContainerComponent, HomeDetailComponent } from './components';
 import { token } from './services';
 
 
@@ -10,9 +10,6 @@ import { token } from './services';
   declarations: [
     HomeContainerComponent,
     HomeDetailComponent,
-    HomeGrandComponent,
-    HomeAuxComponent,
-    ParentComponent
   ],
   providers: [
    {

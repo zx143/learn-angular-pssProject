@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as Mock from 'mockjs'
-import { TabItem } from 'src/app/shared/domain';
+import { Ad, TabItem } from 'src/app/shared/domain';
 import { environment } from 'src/environments/environment';
 import { ChannelList, TopMenu } from '../../shared/components';
 @Injectable({
@@ -78,6 +78,14 @@ export class HomeService {
       selectedIcon: '/assets/tabs/my (1).png'
     }
   ]
+  private mockAdList = Mock.mock({
+    'list|6': [
+      {
+        'imageUrl': '@image("360x120")',
+        "link": '@word(2,5)'
+      }
+    ]
+  })
   constructor(private http: HttpClient){}
   getTopMenuList() {
     //  return this.http.get<TopMenu[]>(`${environment.baseURL}/topmenu`)
@@ -100,5 +108,14 @@ export class HomeService {
   }
   getTabItems() {
     return this.tabItems
+  }
+  getAdList() {
+    // return this.http.get<Ad>(`${environment.baseURL}/ad`, {
+    //   params: {
+    //     name: "xxx",
+    //     age: 'xxx'
+    //   }
+    // })
+    return this.mockAdList.list
   }
 }

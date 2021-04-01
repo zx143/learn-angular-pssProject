@@ -4,3 +4,8 @@ export interface TabItem {
   icon: string,
   selectedIcon: string
 }
+
+export interface Ad {
+  imageUrl: string
+  link: string
+}
